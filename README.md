@@ -2,37 +2,37 @@ This README is designed to look professional to recruiters and collaborators.It 
 
 🍎 NutriScan AIThe Smart Food Recognition & Nutrition AssistantNutriScan AI is a high-performance mobile application that leverages Google Gemini 1.5 Flash and MongoDB to transform how users track their health. Simply snap a photo of your food to get instant nutritional data, allergy warnings, and medicinal insights tailored to your personal health profile.
 
-
-
 🌟 Key Features
 
 📸 Instant AI Recognition: Multi-modal food detection using Gemini 1.5 Flash (accurate for complex dishes and fruits).
+
 📊 Comprehensive Nutrition: Track Calories, Protein, Carbs, and Fats effortlessly.
+
 ⚠️ Smart Safety Alerts: Automatic cross-referencing between scanned food and user allergies stored in your profile.
+
 🧬 Medicinal Insights: Learn the health benefits of your food (e.g., "High in antioxidants," "Good for post-workout recovery").
+
 🕒 Consumption Timing: Recommendations on the best time to eat specific foods for optimal energy.
+
 📈 Progress Dashboard: Daily and weekly visualizations of your nutritional goals.
+
 🌙 Dark Mode: Modern, eye-friendly UI built with NativeWind.
 
-
 🏗️ Technical Architecture The app follows a modern API-first architecture:
- 
- Frontend: Built with React Native (Expo) and Expo Router.State management is handled via Zustand for lightweight, reactive updates.
- 
 
-Backend: A Node.js/Express server acts as the secure bridge. It processes images, handles authentication, and interacts with   the AI.
-    
-    
+Frontend: Built with React Native (Expo) and Expo Router.State management is handled via Zustand for lightweight, reactive updates.
+
+Backend: A Node.js/Express server acts as the secure bridge. It processes images, handles authentication, and interacts with the AI.
+
 AI Engine: Uses the Google Gemini API to perform visual analysis and return structured JSON data.Database: MongoDB Atlas stores user profiles, health data, and historical scan logs.
-    
-    
 
 🚀 Getting StartedPrerequisitesNode.js (v18+)Expo Go app on your mobile deviceA Google AI Studio API KeyInstallationClone the repositoryBashgit clone https://github.com/yourusername/nutriscan-ai.git
 
-
 cd nutriscan-ai
 
-Setup BackendBashcd backend
+Setup BackendBash
+
+cd backend
 
 npm install
 
@@ -50,18 +50,18 @@ npm install
 
 npx expo start
 
-
 📱 ScreenshotsDashboardAI ScannerFood Insights will be soon provided
 
-
-🛡️ Security & PrivacyAPI Security: AI keys are stored strictly on the backend to prevent exposure.
-Data Handling: Images are processed in-memory (RAM) and are not stored permanently to protect user privacy.
-
+🛡️ Security & PrivacyAPI Security: AI keys are stored strictly on the backend to prevent exposure. Data Handling: Images are processed in-memory (RAM) and are not stored permanently to protect user privacy.
 
 🗺️ Roadmap
+
 [ ] Integration with Apple Health & Google Fit.
+
 [ ] Support for barcode scanning (UPC).
+
 [ ] Community recipe suggestions based on scanned ingredients.
+
 [ ] Offline mode using local YOLOv8 models.
 
 🤝 ContributingContributions are welcome! Please open an issue or submit a pull request for any features or bug fixes.
