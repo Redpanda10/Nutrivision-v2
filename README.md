@@ -1,67 +1,90 @@
-This README is designed to look professional to recruiters and collaborators.It highlights the tech stack (AI + Fullstack), explains the "why" behind the app, and provides clear setup instructions.
+<!-- Animated Header -->
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?size=28&duration=4000&color=22C55E&center=true&vCenter=true&width=800&lines=Hi+👋+I'm+Mohit+Singh+Budal;Full+Stack+Developer;AI+%2B+Mobile+App+Builder;React+Native+%7C+Node.js+%7C+MongoDB;Building+Smart+AI+Health+Apps" />
+</p>
 
-🍎 NutriScan AIThe Smart Food Recognition & Nutrition AssistantNutriScan AI is a high-performance mobile application that leverages Google Gemini 1.5 Flash and MongoDB to transform how users track their health. Simply snap a photo of your food to get instant nutritional data, allergy warnings, and medicinal insights tailored to your personal health profile.
+---
 
-🌟 Key Features
+# 👨‍💻 About Me
 
-📸 Instant AI Recognition: Multi-modal food detection using Gemini 1.5 Flash (accurate for complex dishes and fruits).
+🚀 I’m **Mohit Singh Budal**  
+💡 Full-Stack Developer | AI Enthusiast | Mobile App Builder  
 
-📊 Comprehensive Nutrition: Track Calories, Protein, Carbs, and Fats effortlessly.
+I love building **AI-powered real-world applications** that solve practical problems using:
+- 🧠 Machine Learning / AI (Gemini, YOLO, etc.)
+- 📱 React Native mobile apps
+- 🌐 Node.js backend systems
+- 🗄️ MongoDB databases
 
-⚠️ Smart Safety Alerts: Automatic cross-referencing between scanned food and user allergies stored in your profile.
+---
 
-🧬 Medicinal Insights: Learn the health benefits of your food (e.g., "High in antioxidants," "Good for post-workout recovery").
+# 🧠 Current Project
 
-🕒 Consumption Timing: Recommendations on the best time to eat specific foods for optimal energy.
+## 🍎 NutriScan AI
+> AI-powered food recognition & nutrition tracking app
 
-📈 Progress Dashboard: Daily and weekly visualizations of your nutritional goals.
+- 📸 Scan food using camera
+- 🧠 AI detects food items instantly
+- 📊 Calculates calories & macros
+- ⚠️ Allergy safety system
+- ⚖️ Dynamic portion control (100g based scaling)
 
-🌙 Dark Mode: Modern, eye-friendly UI built with NativeWind.
+---
 
-🏗️ Technical Architecture The app follows a modern API-first architecture:
+# ⚙️ Tech Stack
 
-Frontend: Built with React Native (Expo) and Expo Router.State management is handled via Zustand for lightweight, reactive updates.
+<p align="center">
 
-Backend: A Node.js/Express server acts as the secure bridge. It processes images, handles authentication, and interacts with the AI.
+<img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,typescript,javascript,git,github,python" />
 
-AI Engine: Uses the Google Gemini API to perform visual analysis and return structured JSON data.Database: MongoDB Atlas stores user profiles, health data, and historical scan logs.
+</p>
 
-🚀 Getting StartedPrerequisitesNode.js (v18+)Expo Go app on your mobile deviceA Google AI Studio API KeyInstallationClone the repositoryBashgit clone https://github.com/yourusername/nutriscan-ai.git
+---
 
-cd nutriscan-ai
+# 📊 GitHub Stats
 
-Setup BackendBash
+<p align="center">
 
-cd backend
+<img src="https://github-readme-stats.vercel.app/api?username=Redpanda10&show_icons=true&theme=tokyonight" width="48%"/>
 
-npm install
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=Redpanda10&theme=tokyonight" width="48%"/>
 
-Create a .env file in the backend folder:Code snippetPORT=3000
+</p>
 
-MONGO_URI=your_mongodb_connection_string
+---
 
-GEMINI_API_KEY=your_gemini_api_key
+# 📈 Most Used Languages
 
-Start the server:Bashnpm run start
+<p align="center">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Redpanda10&layout=compact&theme=tokyonight" width="50%"/>
+</p>
 
-Setup FrontendBashcd ../frontend
+---
 
-npm install
+# 🚀 Skills
 
-npx expo start
+- ⚛️ React / React Native
+- 🟢 Node.js / Express
+- 🍃 MongoDB / Mongoose
+- 🤖 AI Integration (Gemini API)
+- 📡 REST API Development
+- 📱 Mobile App Architecture
 
-📱 ScreenshotsDashboardAI ScannerFood Insights will be soon provided
+---
 
-🛡️ Security & PrivacyAPI Security: AI keys are stored strictly on the backend to prevent exposure. Data Handling: Images are processed in-memory (RAM) and are not stored permanently to protect user privacy.
+# 🌐 Connect With Me
 
-🗺️ Roadmap
+<p align="center">
 
-[ ] Integration with Apple Health & Google Fit.
+<a href="https://github.com/Redpanda10">
+  <img src="https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
-[ ] Support for barcode scanning (UPC).
+<a href="mailto:your-email@example.com">
+  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
 
-[ ] Community recipe suggestions based on scanned ingredients.
+</p>
 
-[ ] Offline mode using local YOLOv8 models.
+---
 
-🤝 ContributingContributions are welcome! Please open an issue or submit a pull request for any features or bug fixes.
