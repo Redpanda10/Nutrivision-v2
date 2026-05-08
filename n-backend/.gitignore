@@ -1,0 +1,39 @@
+.env
+test.js
+
+# Dependencies
+node_modules/
+
+# Environment variables (CRITICAL)
+.env
+
+# Logs
+logs/
+*.log
+
+# Build files
+dist/ 
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Python byte-code
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# AI/ML Model files (if they are large, usually >50MB)
+*.h5
+*.onnx
+*.weights
+
+
+# AI Models
+*.onnx
+food-ai-app/assets/model/

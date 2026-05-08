@@ -1,2 +1,13 @@
 ./n-backend/.env
 ./food-ai-app/.env
+
+node_modules/
+**/node_modules/
+n-backend/.env
+food-ai-app/.expo/
+*.jpeg
+*.jpg
+
+# AI Models
+*.onnx
+food-ai-app/assets/model/
