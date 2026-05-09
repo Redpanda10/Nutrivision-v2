@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
+  name: { type: String, required: true },
 
   email: {
     type: String,
@@ -14,45 +11,34 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
 
-  password: {
-    type: String,
-    required: true
-  },
+  password: { type: String, required: true },
 
-  isVerified: {
-    type: Boolean,
-    default: false
-  },
-  // Preferred shape going forward (used by the mobile app)
+  isVerified: { type: Boolean, default: false },
+
   healthProfile: {
     age: { type: Number, min: 0, max: 130 },
     weightKg: { type: Number, min: 0 },
     heightCm: { type: Number, min: 0 },
-    dailyCalorieGoal: { type: Number, min: 0 },
-    allergies: [{ type: String, trim: true }],
-    goals: {
-      proteinG: { type: Number, min: 0 },
-      carbsG: { type: Number, min: 0 },
-      fatG: { type: Number, min: 0 }
-    }
+    allergies: [{ type: String, trim: true }]
   },
+
   preferences: {
     darkMode: { type: Boolean, default: false }
   },
 
-  // Back-compat fields (existing API uses these today)
-  age: { type: Number },
-  weight: { type: Number },
-  height: { type: Number },
-  allergies: [{ type: String }],
-  dailyCalorieGoal: { type: Number },
+  goals: {
+    caloriesKcal: { type: Number, default: 2000 },
+    proteinG: { type: Number, default: 120 },
+    carbsG: { type: Number, default: 250 },
+    fatG: { type: Number, default: 70 },
+    sugarG: { type: Number, default: 50 }
+  },
 
-  otp: String,
-  otpExpire: Date,
+  otp: { type: String, default: undefined },
+  otpExpire: { type: Date, default: undefined },
 
   resetToken: String,
   resetTokenExpire: Date
-
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);

@@ -85,3 +85,20 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   }
 }));
 
+hydrateAuth: async () => {
+  try {
+    const token = await AsyncStorage.getItem("token");
+    const user = await AsyncStorage.getItem("user");
+
+    if (token) {
+      setAuthToken(token);
+    }
+
+    set({
+      token: token || null,
+      user: user ? JSON.parse(user) : null,
+    });
+  } catch (err) {
+    console.log("Hydrate error:", err);
+  }
+},

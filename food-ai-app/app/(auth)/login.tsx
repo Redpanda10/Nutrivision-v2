@@ -17,7 +17,7 @@ export default function Login() {
       await login(email, password);
       router.replace("/(tabs)/dashboard");
     } catch (e) {
-      // error handled via store
+      console.log({e})
     }
   };
 

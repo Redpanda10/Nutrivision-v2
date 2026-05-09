@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Platform } from "react-native";
 
-let defaultBaseURL = "http://localhost:5000";
+let defaultBaseURL = "http://192.168.16.101:5000";
 
 // On Android emulator, localhost refers to the emulator itself.
 if (Platform.OS === "android") {
@@ -24,3 +24,12 @@ export const setAuthToken = (token: string | null) => {
   }
 };
 
+api.interceptors.request.use(async (config) => {
+  const token = await require("@react-native-async-storage/async-storage").default.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});

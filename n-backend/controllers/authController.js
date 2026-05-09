@@ -305,54 +305,102 @@ exports.resetPassword = async (req, res) => {
 
 };
 
-exports.updateProfile = async (req,res)=>{
+exports.updateProfile = async (req, res) => {
+  try {
+    const {
+      healthProfile,
+      preferences,
+      goals
+    } = req.body;
 
-  const {
-    healthProfile,
-    age,
-    weight,
-    height,
-    allergies,
-    dailyCalorieGoal,
-    goals,
-    preferences
-  } = req.body;
+    const user = await User.findById(req.user.id);
 
-  const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-  // Back-compat updates
-  if (age !== undefined) user.age = age;
-  if (weight !== undefined) user.weight = weight;
-  if (height !== undefined) user.height = height;
-  if (allergies !== undefined) user.allergies = allergies;
-  if (dailyCalorieGoal !== undefined) user.dailyCalorieGoal = dailyCalorieGoal;
+    /* =========================
+       HEALTH PROFILE UPDATE
+    ========================= */
+    if (healthProfile) {
+      user.healthProfile = {
+        ...user.healthProfile,
+        age: healthProfile.age ?? user.healthProfile?.age,
+        weightKg: healthProfile.weightKg ?? user.healthProfile?.weightKg,
+        heightCm: healthProfile.heightCm ?? user.healthProfile?.heightCm,
+        allergies: healthProfile.allergies ?? user.healthProfile?.allergies,
+      };
+    }
 
-  // Preferred healthProfile shape (mobile app)
-  const hp = healthProfile ?? {
-    age,
-    weightKg: weight,
-    heightCm: height,
-    dailyCalorieGoal,
-    allergies,
-    goals
-  };
+    /* =========================
+       GOALS UPDATE (IMPORTANT)
+    ========================= */
+    if (goals) {
+      user.goals = {
+        ...user.goals,
+        caloriesKcal: goals.caloriesKcal ?? user.goals?.caloriesKcal,
+        proteinG: goals.proteinG ?? user.goals?.proteinG,
+        carbsG: goals.carbsG ?? user.goals?.carbsG,
+        fatG: goals.fatG ?? user.goals?.fatG,
+        sugarG: goals.sugarG ?? user.goals?.sugarG,
+      };
+    }
 
-  user.healthProfile = user.healthProfile || {};
-  if (hp.age !== undefined) user.healthProfile.age = hp.age;
-  if (hp.weightKg !== undefined) user.healthProfile.weightKg = hp.weightKg;
-  if (hp.heightCm !== undefined) user.healthProfile.heightCm = hp.heightCm;
-  if (hp.dailyCalorieGoal !== undefined) user.healthProfile.dailyCalorieGoal = hp.dailyCalorieGoal;
-  if (hp.allergies !== undefined) user.healthProfile.allergies = hp.allergies;
-  if (hp.goals !== undefined) user.healthProfile.goals = { ...(user.healthProfile.goals || {}), ...hp.goals };
+    /* =========================
+       PREFERENCES UPDATE
+    ========================= */
+    if (preferences) {
+      user.preferences = {
+        ...user.preferences,
+        ...preferences,
+      };
+    }
 
-  if (preferences !== undefined) {
-    user.preferences = { ...(user.preferences || {}), ...preferences };
+    await user.save();
+
+    return res.json({
+      message: "Profile updated successfully",
+      user: {
+        healthProfile: user.healthProfile,
+        goals: user.goals,
+        preferences: user.preferences,
+      },
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      message: "Profile update failed",
+      error: error.message,
+    });
   }
+};
 
-  await user.save();
+exports.updateGoals = async (req, res) => {
+  try {
+    const { caloriesKcal, proteinG, carbsG, fatG, sugarG } = req.body;
 
-  res.json({
-    message:"Profile updated"
-  });
+    const user = await User.findById(req.user.id);
 
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.goals = {
+      caloriesKcal: caloriesKcal ?? user.goals.caloriesKcal,
+      proteinG: proteinG ?? user.goals.proteinG,
+      carbsG: carbsG ?? user.goals.carbsG,
+      fatG: fatG ?? user.goals.fatG,
+      sugarG: sugarG ?? user.goals.sugarG,
+    };
+
+    await user.save();
+
+    res.json({
+      message: "Goals updated",
+      goals: user.goals,
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: "Error updating goals" });
+  }
 };
